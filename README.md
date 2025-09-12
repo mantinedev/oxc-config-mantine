@@ -11,19 +11,27 @@ yarn add --dev @eslint/js eslint eslint-plugin-jsx-a11y eslint-plugin-react type
 In your `eslint.config.js`:
 
 ```tsx
-const mantine = require("eslint-config-mantine");
-const tseslint = require("typescript-eslint");
+import mantine from "eslint-config-mantine";
+import { defineConfig } from "eslint/config";
+import tseslint from "typescript-eslint";
 
-module.exports = tseslint.config(
+// @ts-check
+export default defineConfig(
+  tseslint.configs.recommended,
   ...mantine,
+  { ignores: ["**/*.{mjs,cjs,js,d.ts,d.mts}"] },
+  {
+    files: ["**/*.story.tsx"],
+    rules: { "no-console": "off" },
+  },
   {
     languageOptions: {
       parserOptions: {
-        project: "./tsconfig.eslint.json",
+        tsconfigRootDir: process.cwd(),
+        project: ["./tsconfig.json"],
       },
     },
-  },
-  { ignores: ["**/*.{mjs,cjs,js,d.ts,d.mts}"] }
+  }
 );
 ```
 
