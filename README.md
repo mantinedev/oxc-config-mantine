@@ -1,38 +1,46 @@
-# eslint-config-mantine
+# oxc-config-mantine
+
+Mantine Oxc configuration for [oxlint](https://oxc.rs/docs/guide/usage/linter) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter).
 
 ## Install
 
 ```sh
-yarn add --dev @eslint/js eslint eslint-plugin-jsx-a11y eslint-plugin-react typescript-eslint eslint-config-mantine
+yarn add --dev oxlint oxfmt oxc-config-mantine
 ```
 
 ## Usage
 
-In your `eslint.config.js`:
+In your `oxlint.config.ts`:
 
-```tsx
-import mantine from "eslint-config-mantine";
-import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
+```ts
+import { defineConfig } from 'oxlint';
+import { oxlint } from 'oxc-config-mantine';
 
-// @ts-check
-export default defineConfig(
-  tseslint.configs.recommended,
-  ...mantine,
-  { ignores: ["**/*.{mjs,cjs,js,d.ts,d.mts}"] },
-  {
-    files: ["**/*.story.tsx"],
-    rules: { "no-console": "off" },
-  },
-  {
-    languageOptions: {
-      parserOptions: {
-        tsconfigRootDir: process.cwd(),
-        project: ["./tsconfig.json"],
-      },
-    },
-  }
-);
+export default defineConfig({
+  extends: [oxlint],
+  ignorePatterns: ['**/*.{mjs,cjs,js,d.ts,d.mts}'],
+});
+```
+
+In your `oxfmt.config.ts`:
+
+```ts
+import { defineConfig } from 'oxfmt';
+import { oxfmt } from 'oxc-config-mantine';
+
+export default defineConfig(oxfmt);
+```
+
+You can extend the formatter config with project-specific options:
+
+```ts
+import { defineConfig } from 'oxfmt';
+import { oxfmt } from 'oxc-config-mantine';
+
+export default defineConfig({
+  ...oxfmt,
+  ignorePatterns: [...oxfmt.ignorePatterns, 'dist'],
+});
 ```
 
 ## License

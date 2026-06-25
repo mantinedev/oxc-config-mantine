@@ -1,21 +1,35 @@
 {
-  "name": "eslint-config-mantine",
-  "version": "4.0.3",
-  "main": "eslint.config.js",
+  "name": "oxc-config-mantine",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
   "types": "./types.d.ts",
+  "files": [
+    "index.js",
+    "types.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./types.d.ts",
+      "default": "./index.js"
+    }
+  },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "sideEffects": false,
   "repository": {
-    "url": "https://github.com/mantinedev/eslint-config-mantine.git",
+    "url": "https://github.com/mantinedev/oxc-config-mantine.git",
     "type": "git"
   },
   "peerDependencies": {
-    "@eslint/js": "^9.9.1",
-    "eslint": "^9.9.1",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-react": "^7.35.0",
-    "typescript-eslint": "^8.3.0"
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0"
   },
-  "packageManager": "yarn@4.9.4"
+  "packageManager": "yarn@4.17.0",
+  "devDependencies": {
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0"
+  }
 }
