@@ -16,6 +16,9 @@
       "default": "./index.js"
     }
   },
+  "scripts": {
+    "test": "node --test"
+  },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "sideEffects": false,
@@ -24,12 +27,12 @@
     "type": "git"
   },
   "peerDependencies": {
-    "oxfmt": "^0.55.0",
+    "oxfmt": ">=0.55.0",
     "oxlint": "^1.70.0"
   },
   "packageManager": "yarn@4.17.0",
   "devDependencies": {
-    "oxfmt": "^0.56.0",
-    "oxlint": "^1.71.0"
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0"
   }
 }
