@@ -30,7 +30,7 @@
     "oxfmt": ">=0.55.0",
     "oxlint": "^1.70.0"
   },
-  "packageManager": "yarn@4.17.0",
+  "packageManager": "yarn@4.17.1",
   "devDependencies": {
     "oxfmt": "^0.60.0",
     "oxlint": "^1.75.0"
