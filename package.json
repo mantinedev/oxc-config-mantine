@@ -1,6 +1,6 @@
 {
   "name": "oxc-config-mantine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "index.js",
   "types": "./types.d.ts",
