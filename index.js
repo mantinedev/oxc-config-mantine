@@ -77,6 +77,20 @@ export const oxlint = {
     'react/self-closing-comp': 'error',
     'react/void-dom-elements-no-children': 'error',
 
+    // React Compiler rules, added to the `react` plugin in oxlint 1.79. They report where the
+    // compiler bails out of optimizing rather than actual defects, and they misreport context
+    // objects that hold DOM nodes: every field of such an object (booleans and callbacks
+    // included) is treated as a ref. `preserve-manual-memoization` is `exhaustive-deps` under
+    // a new name, which is turned off below on purpose.
+    'react/refs': 'off',
+    'react/immutability': 'off',
+    'react/set-state-in-effect': 'off',
+    'react/purity': 'off',
+    'react/globals': 'off',
+    'react/use-memo': 'off',
+    'react/preserve-manual-memoization': 'off',
+    'react/incompatible-library': 'off',
+
     'jsx-a11y/no-autofocus': 'off',
     'jsx-a11y/mouse-events-have-key-events': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
