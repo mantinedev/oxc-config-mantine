@@ -127,6 +127,13 @@ export const oxfmt = {
       // is not treated as a package stylesheet.
       { groupName: 'css_modules', elementNamePattern: ['**/*.module.css'] },
       { groupName: 'local_css', elementNamePattern: ['./**/*.css', '../**/*.css'] },
+      // `@mantine/core` styles must be imported before all other packages styles,
+      // otherwise core resets (UnstyledButton, Input, etc.) win on source order and
+      // override the styles of the components that build on them.
+      {
+        groupName: 'core_styles',
+        elementNamePattern: ['@mantine/core/styles.css', '@mantine/core/styles.layer.css'],
+      },
       {
         groupName: 'package_styles',
         elementNamePattern: ['**/styles.css', '**/styles.layer.css'],
@@ -141,6 +148,7 @@ export const oxfmt = {
       { groupName: 'root_alias', elementNamePattern: ['@/**'] },
     ],
     groups: [
+      'core_styles',
       'package_styles',
       { newlinesBetween: true },
       'dayjs',

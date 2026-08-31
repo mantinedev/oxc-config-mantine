@@ -59,6 +59,29 @@ test('oxfmt config sorts imports into the Mantine group order', async () => {
   assert.equal(code, expected);
 });
 
+test('oxfmt config sorts @mantine/core styles before other packages styles', async () => {
+  const stylesInput = `import '@docs/demos/styles.css';
+import '@mantine/carousel/styles.css';
+import '@mantine/code-highlight/styles.css';
+import '@mantine/core/styles.css';
+import '@mantinex/demo/styles.css';
+import './variables.css';
+`;
+
+  const stylesExpected = `import '@mantine/core/styles.css';
+import '@docs/demos/styles.css';
+import '@mantine/carousel/styles.css';
+import '@mantine/code-highlight/styles.css';
+import '@mantinex/demo/styles.css';
+
+import './variables.css';
+`;
+
+  const { code, errors } = await format('sample.tsx', stylesInput, oxfmt);
+  assert.deepEqual(errors, []);
+  assert.equal(code, stylesExpected);
+});
+
 test('oxfmt config only uses options oxfmt recognises', async () => {
   const schemaUrl = new URL('../configuration_schema.json', import.meta.resolve('oxfmt'));
   const schema = JSON.parse(await readFile(schemaUrl, 'utf8'));
